@@ -14,7 +14,12 @@ mv "$j" "$i.$ext"
 #echo $j
 i=$((i+1))
 done;
-
+mkdir images
+mv ./*.* images
+touch images_list.txt
+for j in ${arr[@]}; do
+	echo "$j" >> images_list.txt
+done;
 unset IFS
 unset script_name
 unset directory_path
