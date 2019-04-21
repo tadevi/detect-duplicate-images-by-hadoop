@@ -29,10 +29,10 @@ public class RDIDriver extends Configured implements Tool{
 		FileInputFormat.setInputPaths(job,new Path(args[0]));
 		FileOutputFormat.setOutputPath(job,new Path(args[1]));
 
-		job.setMapOutputKeyClass(BytesWritable.class);
+		job.setMapOutputKeyClass(Text.class);
 		job.setMapOutputValueClass(Text.class);
-		job.setOutputKeyClass(Text.class);
-		job.setOutputValueClass(IntWritable.class);
+		job.setOutputKeyClass(IntWritable.class);
+		job.setOutputValueClass(Text.class);
 
 		job.setMapperClass(RDIMapper.class);
 		job.setReducerClass(RDIReducer.class);

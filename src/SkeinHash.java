@@ -88,7 +88,18 @@ public class SkeinHash {
     public static void hash(byte[] msg, byte[] digest) {
         hash(msg, msg.length * 8, digest);
     }
-
+    private static char[] hexArray="0123456789abcdef".toCharArray();
+    public static String hash(byte[] msg, int length){
+        byte[] digest=new byte[64];
+        hash(msg,length*8,digest);
+        char[] hexChars=new char[digest.length*2];
+        for(int j=0;j<digest.length;++j){
+            int v=digest[j]&0xFF;
+            hexChars[j*2]=hexArray[v>>>4];
+            hexChars[j*2+1]=hexArray[v&0x0F];
+        }
+        return new String(hexChars);
+    }
     /**
      * Calculate the hash code of the given message.
      *
